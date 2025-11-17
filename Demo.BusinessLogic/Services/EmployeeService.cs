@@ -15,24 +15,8 @@ namespace Demo.BusinessLogic.Services
         public IEnumerable<EmployeeDto> GetAll(string? EmployeeSearchName)
         {
             var data = _employeeRepositry.GetAll(EmployeeSearchName);
-
             var empdto = _mapper.Map<IEnumerable<Employee>, IEnumerable<EmployeeDto>>(data);
-            return empdto;
-
-            //var Emps = data.Select(e => new EmployeeDto{
-            //    Id = e.Id,
-            //    Name = e.Name,
-            //    Address = e.Address,
-            //    Age = e.Age,
-            //    Email = e.Email,
-            //    EmployeeType = e.EmployeeType.ToString(),
-            //    Gender =e.Gender.ToString(),
-            //    IsActive = e.IsActive,
-            //    Salary = e.Salary
-
-            //});
-
-            //return Emps;
+            return empdto; 
         }
 
         public EmployeeDetailsDto? GetById(int id)
@@ -40,22 +24,7 @@ namespace Demo.BusinessLogic.Services
             var data = _employeeRepositry.GetById(id);
             if (data == null) return null;
             var empdto = _mapper.Map<Employee, EmployeeDetailsDto>(data);
-
             return empdto;
-            //data is null ? null : new employeedetailsdto
-            //{
-            //    address = data.address,
-            //    age = data.age,
-            //    email = data.email,
-            //    employeetype = data.employeetype.tostring(),
-            //    salary = data.salary,
-            //    isactive = data.isactive,
-            //    gender = data.gender.tostring(),
-            //    id = id,
-            //    name = data.name,
-            //    phonenumber = data.phonenumber,
-            //    hiredate = dateonly.fromdatetime(data.hiredate),
-            //};
         }
 
         public int CreatEmp(CreatEmployeeDto creatEmployeeDto)
