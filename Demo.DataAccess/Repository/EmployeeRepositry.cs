@@ -19,9 +19,13 @@ namespace Demo.DataAccess.Repository
 
         }
         // Get All
-        public IEnumerable<Employee> GetAll()
+        public IEnumerable<Employee> GetAll(string? EmployeeSearchName)
         {
-            return _dbcontext.Employees.ToList();
+            if(!string.IsNullOrWhiteSpace(EmployeeSearchName))
+                return _dbcontext.Employees.Where(e=>e.Name.ToLower().Contains(EmployeeSearchName.ToLower())).ToList();
+            else
+                return _dbcontext.Employees.ToList();
+
         }
         //GetById
         public Employee? GetById(int id)

@@ -16,9 +16,10 @@ namespace Demo.Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string? EmployeeSearchName)
         {
-            var data = _employeeService.GetAll();
+            var data = _employeeService.GetAll(EmployeeSearchName);
+            ViewBag.search = EmployeeSearchName;
 
             return View(data);
         }

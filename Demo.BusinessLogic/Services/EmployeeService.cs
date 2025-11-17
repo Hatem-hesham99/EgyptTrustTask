@@ -12,9 +12,9 @@ namespace Demo.BusinessLogic.Services
 {
     public class EmployeeService(IEmployeeRepositry _employeeRepositry, IMapper _mapper) : IEmployeeService
     {
-        public IEnumerable<EmployeeDto> GetAll()
+        public IEnumerable<EmployeeDto> GetAll(string? EmployeeSearchName)
         {
-            var data = _employeeRepositry.GetAll();
+            var data = _employeeRepositry.GetAll(EmployeeSearchName);
 
             var empdto = _mapper.Map<IEnumerable<Employee>, IEnumerable<EmployeeDto>>(data);
             return empdto;
