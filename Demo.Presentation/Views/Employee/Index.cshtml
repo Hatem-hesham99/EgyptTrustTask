@@ -89,6 +89,40 @@
                     </td>
                 </tr>
             }
+            <tr class="mt-5">
+                <td>
+                    @{
+                        int PrevPageNo = ViewBag.PageNo - 1;
+                        if(PrevPageNo <= 0)
+                        {
+                            PrevPageNo = 1;
+                        }
+                        int NextPageNo = ViewBag.PageNo + 1;
+                        if (NextPageNo > ViewBag.NoOfPages)
+                        {
+                            NextPageNo = ViewBag.NoOfPages;
+                        }
+                    }
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                            <li class="page-item"><a href="/Employee/Index?PageNo=@PrevPageNo" class="page-link">Previous</a></li>
+                            @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                            {
+                                if ((i + 1) == ViewBag.PageNo)
+                                {
+                                    <li class="page-item"><a href="/Employee/Index?PageNo=@(i + 1)" class="page-link">@(i + 1)</a></li>
+
+                                }
+                                else
+                                {
+                                    <li class="page-item"><a href="/Employee/Index?PageNo=@(i + 1)" class="page-link">@(i + 1)</a></li>
+                                }
+                            }
+                            <li class="page-item"><a href="/Employee/Index?PageNo=@NextPageNo" class="page-link">Next</a></li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
         </tbody>
 
     </table>

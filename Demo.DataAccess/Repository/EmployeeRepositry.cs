@@ -21,8 +21,12 @@ namespace Demo.DataAccess.Repository
         // Get All
         public IEnumerable<Employee> GetAll(string? EmployeeSearchName)
         {
-            if(!string.IsNullOrWhiteSpace(EmployeeSearchName))
-                return _dbcontext.Employees.Where(e=>e.Name.ToLower().Contains(EmployeeSearchName.ToLower())).ToList();
+            if (!string.IsNullOrWhiteSpace(EmployeeSearchName))
+                return _dbcontext.Employees.Where(e => e.Name.ToLower().Contains(EmployeeSearchName.ToLower())).ToList();
+                //return _dbcontext.Employees
+                //    .Where(e => e.Name.ToLower().Contains(EmployeeSearchName.ToLower())
+                //             || e.Email.ToLower().Contains(EmployeeSearchName.ToLower()))
+                //    .ToList();
             else
                 return _dbcontext.Employees.ToList();
 

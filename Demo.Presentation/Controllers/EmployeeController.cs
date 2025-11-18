@@ -16,10 +16,19 @@ namespace Demo.Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(string? EmployeeSearchName)
+        public IActionResult Index(string? EmployeeSearchName ,int PageNo=1)
         {
             var data = _employeeService.GetAll(EmployeeSearchName);
             ViewBag.search = EmployeeSearchName;
+
+            int NoOfRecouredPerPage = 5;
+
+            int totalRecords = data.Count(); 
+            int NoOfPages = (int)Math.Ceiling((double)totalRecords / NoOfRecouredPerPage);
+            int NoOfReecoresToSkip = (PageNo-1)* NoOfRecouredPerPage;
+            ViewBag.PageNo = PageNo;
+            ViewBag.NoOfPages = NoOfPages;
+            data = data.Skip(NoOfReecoresToSkip).Take(NoOfRecouredPerPage).ToList();
 
             return View(data);
         }
