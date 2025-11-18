@@ -12,7 +12,8 @@ namespace Demo.BusinessLogic.Dtos
     public class CreatEmployeeDto
     {
         public int Id { get; set; }
-        [Required]
+
+        [Required(ErrorMessage ="Must Enter Name")]
         [MaxLength(50, ErrorMessage = "Max length should be 50 character")]
         [MinLength(5, ErrorMessage = "Min length should be 5 characters")]
         public string Name { get; set; } = null!;
@@ -21,6 +22,7 @@ namespace Demo.BusinessLogic.Dtos
         //[RegularExpression("^[1-9]{1,3}-[a-zA-Z]{5,10}-[a-zA-Z]{5,10}-[a-zA-Z]{5,10}$"
         [MinLength(5, ErrorMessage = "Min length should be 5 characters")]
         public string? Address { get; set; }
+        [Required(ErrorMessage = "Must Enter Salary")]
         [DataType(DataType.Currency)]
         [Range(2000, double.MaxValue, ErrorMessage = "Salary must be at least 2000.")]
         public decimal Salary { get; set; }
@@ -34,6 +36,7 @@ namespace Demo.BusinessLogic.Dtos
         [Display(Name = "Hiring Date")]
         [Required(ErrorMessage = "must be insert Hiring Date")]
         public DateOnly HiringDate { get; set; }
+        [Required(ErrorMessage = "Must choice Employee Type ")]
         public EmployeeType EmployeeType { get; set; }
     }
 }
