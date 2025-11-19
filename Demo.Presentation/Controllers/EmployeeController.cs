@@ -21,7 +21,7 @@ namespace Demo.Presentation.Controllers
             var data = _employeeService.GetAll(EmployeeSearchName);
             ViewBag.search = EmployeeSearchName;
 
-            int NoOfRecouredPerPage = 5;
+            int NoOfRecouredPerPage = 3;
 
             int totalRecords = data.Count(); 
             int NoOfPages = (int)Math.Ceiling((double)totalRecords / NoOfRecouredPerPage);

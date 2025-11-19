@@ -64,14 +64,14 @@
                     <td> <a class="btn btn-info" asp-action="Details" asp-route-id="@employee.Id"> <i class="fas fa-eye"></i> Details</a> </td>
                     <td> <a class="btn btn-success" asp-action="Edit" asp-route-id="@employee.Id"><i class="fas fa-edit"></i>Edite</a> </td>
                     <td>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-@employee.Id">
                             <i class="fas fa-trash"></i>  Delete
                         </button>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal-@employee.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Delete Employee </h5>
+                                        <h5 class="modal-title" id="exampleModalLabel-@employee.Id">Delete Employee </h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
